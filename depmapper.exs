@@ -32,8 +32,8 @@ defmodule Mix.DepMapper do
       |> Map.put(:git,         git)
       |> Map.put(:branch,      @default_branch)
     dep
-      |> Map.put(:requirement, nil)
-      |> Map.put(:scm,         Mix.SCM.Git)
-      |> Map.put(:opts,        Enum.into(opts, []))
+    |> Map.put(:requirement, nil)
+    |> Map.put(:scm,         Mix.SCM.Git)
+    |> Map.put(:opts,        Enum.into(opts, []))
   end
 end

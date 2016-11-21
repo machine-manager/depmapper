@@ -19,7 +19,7 @@ defmodule Mix.DepMapper do
     end
     name = case type do
       :hex -> Atom.to_string(opts.hex)
-      :git -> opts.git |> String.split("/") |> List.last
+      :git -> opts.git |> String.split("/") |> List.last |> String.replace_suffix(".git", "")
       _    -> raise "Dependency is not of type hex or git:\n#{inspect dep, pretty: true, width: 0}"
     end
     git = Path.join(@repos_path, name)

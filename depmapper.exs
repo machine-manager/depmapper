@@ -18,7 +18,7 @@ defmodule Mix.DepMapper do
       Map.has_key?(opts, :git) -> :git
     end
     name = case type do
-      :hex -> Atom.to_string(opts.hex)
+      :hex -> opts.hex
       :git -> opts.git |> String.split("/") |> List.last |> String.replace_suffix(".git", "")
       _    -> raise "Dependency is not of type hex or git:\n#{inspect dep, pretty: true, width: 0}"
     end

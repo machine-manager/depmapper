@@ -14,7 +14,7 @@ defmodule Mix.DepMapper do
     end
     name = case type do
       :hex -> opts.hex
-      :git -> opts.git |> String.split("/") |> List.last |> String.replace_suffix(".git", "")
+      :git -> opts.git |> String.split("/") |> List.last |> String.replace_suffix(".git", "") |> git_repo_name
       _    -> raise "Dependency is not of type hex or git:\n#{inspect dep, pretty: true, width: 0}"
     end
     git    = Path.join(@repos_path, name)
@@ -32,6 +32,12 @@ defmodule Mix.DepMapper do
     |> Map.put(:scm,         Mix.SCM.Git)
     |> Map.put(:opts,        Enum.into(opts, []))
   end
+
+  defp git_repo_name("erlang-certifi"),     do: "certifi"
+  defp git_repo_name("erlang-idna"),        do: "idna"
+  defp git_repo_name("erlang-metrics"),     do: "metrics"
+  defp git_repo_name("ssl_verify_fun.erl"), do: "ssl_verify_fun"
+  defp git_repo_name(other),                do: other
 
   # Return the branch to check out.  My workflow is to mark audited known-good
   # commits with both a branch and timestamped tag using

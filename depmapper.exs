@@ -24,6 +24,7 @@ defmodule Mix.DepMapper do
     end
     opts = opts
       |> Map.delete(:hex)
+      |> Map.delete(:ref)
       |> Map.put(:checkout, opts.dest)
       |> Map.put(:git,      git)
       |> Map.put(:branch,   branch)

@@ -46,11 +46,10 @@ defmodule Mix.DepMapper do
   #
   # For repositories whose upstream is ourselves, pick the master branch
   # so that we don't have to constantly mark it.
-  defp known_good_branch(name) do
-    cond do
-      name in ["converge", "base_system", "debpress", "gears"] -> "master"
-      String.starts_with?(name, "role_")                       -> "master"
-      true                                                     -> "bien"
-    end
-  end
+  defp known_good_branch("converge"),    do: "master"
+  defp known_good_branch("base_system"), do: "master"
+  defp known_good_branch("debpress"),    do: "master"
+  defp known_good_branch("gears"),       do: "master"
+  defp known_good_branch("role_" <> _),  do: "master"
+  defp known_good_branch(_),             do: "bien"
 end

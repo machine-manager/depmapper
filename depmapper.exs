@@ -49,6 +49,7 @@ defmodule Mix.DepMapper do
   defp known_good_branch("converge"),    do: "master"
   defp known_good_branch("base_system"), do: "master"
   defp known_good_branch("debpress"),    do: "master"
+  defp known_good_branch("chronocache"), do: "master"
   defp known_good_branch("gears"),       do: "master"
   defp known_good_branch("role_" <> _),  do: "master"
   defp known_good_branch(_),             do: "bien"

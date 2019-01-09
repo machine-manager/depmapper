@@ -44,8 +44,8 @@ defmodule Mix.DepMapper do
   # commits with both a branch and timestamped tag using
   # https://github.com/ludios/tagmyrebase
   #
-  # For repositories whose upstream is ourselves, pick the master branch
-  # so that we don't have to constantly mark it.
+  # For repositories for which we are the upstream, pick the master branch
+  # so that we don't have to constantly mark them.
   defp known_good_branch("converge"),    do: "master"
   defp known_good_branch("base_system"), do: "master"
   defp known_good_branch("debpress"),    do: "master"
